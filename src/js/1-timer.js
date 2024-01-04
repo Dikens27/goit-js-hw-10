@@ -19,7 +19,13 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] < options.defaultDate) {
-      window.alert("Please choose a date in the future");
+    iziToast.show({
+      title: 'Please choose a date in the future',
+      titleColor: 'white',
+      color: 'white',
+      backgroundColor: 'red',
+      position: 'topRight',
+    });
       button.setAttribute("disabled", true);
     } else {
       button.removeAttribute("disabled")
@@ -54,11 +60,16 @@ function convertMs(ms) {
 
 
 button.addEventListener('click', () => {
-  const currentDateTime = new Date().getTime();
-  const selectedDateTime = userSelectedDate.getTime();
+  const currentDateTime = new Date("2023-10-08 17:25").getTime();
+  let selectedDateTime = userSelectedDate.getTime();
 
-  setInterval(() => {
+  const timeInterval = setInterval(() => {
+    selectedDateTime = selectedDateTime - 1000;
     let different = selectedDateTime - currentDateTime - 1000;
+    
+    if (currentDateTime == selectedDateTime - 1000) {
+      clearInterval(timeInterval);
+    }
 
     const result = convertMs(different);
 
