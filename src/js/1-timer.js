@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 const input = document.querySelector("#datetime-picker");
 const button = document.querySelector("button");
@@ -32,12 +34,6 @@ const options = {
 flatpickr(input, options);
 
 
-
-
-
-
-
-
 function pad(value) {
   return String(value).padStart(2, "0");
 }
@@ -58,7 +54,7 @@ function convertMs(ms) {
 
 
 button.addEventListener('click', () => {
-  const currentDateTime = new Date().getTime(1000);
+  const currentDateTime = new Date().getTime();
   const selectedDateTime = userSelectedDate.getTime();
 
   setInterval(() => {
