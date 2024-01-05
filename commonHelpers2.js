@@ -1,0 +1,2 @@
+import"./assets/styles-e01d7f59.js";import"./assets/vendor-651d7991.js";const o=document.querySelector(".form"),l=document.querySelector('input[name="delay"]');o.addEventListener("submit",n=>{n.preventDefault();const t=parseInt(l.value,10),i=o.elements.state.value;new Promise((e,s)=>{setTimeout(()=>{i==="fulfilled"?e(t):s(t)},t)}).then(e=>{console.log(`✅ Fulfilled promise in ${e}ms`)}).catch(e=>{console.log(`❌ Rejected promise in ${e}ms`)})});
+//# sourceMappingURL=commonHelpers2.js.map
