@@ -9,6 +9,7 @@ form.addEventListener('submit', (event) => {
 
     const delay = parseInt(inputDeley.value, 10);
     const state = form.elements.state.value;
+    event.target.reset();
 
     const notificationPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -22,10 +23,22 @@ form.addEventListener('submit', (event) => {
 
     notificationPromise
         .then((delay) => {
-            console.log(`✅ Fulfilled promise in ${delay}ms`);
+            iziToast.show({
+                title: `✅ Fulfilled promise in ${delay}ms`,
+                titleColor: 'white',
+                color: 'white',
+                backgroundColor: 'green',
+                position: 'topRight',
+            });
         })
         .catch((delay) => {
-            console.log(`❌ Rejected promise in ${delay}ms`);
+            iziToast.show({
+                title: `❌ Rejected promise in ${delay}ms`,
+                titleColor: 'white',
+                color: 'white',
+                backgroundColor: 'red',
+                position: 'topRight',
+            });
         });
 });
 
