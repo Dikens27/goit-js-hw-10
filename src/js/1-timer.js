@@ -11,7 +11,7 @@ const minutesTimer = document.querySelector("[data-minutes]");
 const secondsTimer = document.querySelector("[data-seconds]");
 
 let userSelectedDate = "";
-button.setAttribute("disabled", true)
+button.setAttribute("disabled", true);
 
 const options = {
   enableTime: true,
