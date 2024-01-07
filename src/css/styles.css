@@ -60,6 +60,7 @@ button[data-start] {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
+  border: none;
 }
 
 button[data-start]:hover {
@@ -175,6 +176,8 @@ button[data-start]:focus-visible {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.0.4em;
+  border: none;
+  cursor: pointer;
 }
 
 .form>button:hover {

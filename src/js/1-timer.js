@@ -11,14 +11,15 @@ const minutesTimer = document.querySelector("[data-minutes]");
 const secondsTimer = document.querySelector("[data-seconds]");
 
 let userSelectedDate = "";
+button.setAttribute("disabled", true)
 
 const options = {
   enableTime: true,
   time_24hr: true,
-  defaultDate: new Date("2023-10-08 17:25"),
+  defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0] < options.defaultDate) {
+    if (selectedDates[0] <= options.defaultDate) {
     iziToast.show({
       title: 'Please choose a date in the future',
       titleColor: 'white',
@@ -26,7 +27,6 @@ const options = {
       backgroundColor: 'red',
       position: 'topRight',
     });
-      button.setAttribute("disabled", true);
     } else {
       button.removeAttribute("disabled")
       userSelectedDate = selectedDates[0];
@@ -60,7 +60,7 @@ function convertMs(ms) {
 
 
 button.addEventListener('click', () => {
-  const currentDateTime = new Date("2023-10-08 17:25").getTime();
+  const currentDateTime = Date.now();
   let selectedDateTime = userSelectedDate.getTime();
 
   const timeInterval = setInterval(() => {
@@ -73,10 +73,10 @@ button.addEventListener('click', () => {
 
     const result = convertMs(different);
 
-    daysTimer.textContent = `${result.days}`;
-    hoursTimer.textContent = `${result.hours}`;
-    minutesTimer.textContent = `${result.minutes}`;
-    secondsTimer.textContent = `${result.seconds}`;
+    daysTimer.textContent = result.days;
+    hoursTimer.textContent = result.hours;
+    minutesTimer.textContent = result.minutes;
+    secondsTimer.textContent = result.seconds;
   }, 1000);
 });
 
