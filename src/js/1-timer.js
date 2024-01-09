@@ -61,13 +61,13 @@ function convertMs(ms) {
 
 button.addEventListener('click', () => {
   const currentDateTime = Date.now();
-  let selectedDateTime = userSelectedDate.getTime();
+  let selectedDateTime = userSelectedDate;
 
   const timeInterval = setInterval(() => {
     selectedDateTime = selectedDateTime - 1000;
-    let different = selectedDateTime - currentDateTime - 1000;
+    let different = selectedDateTime - currentDateTime;
     
-    if (currentDateTime == selectedDateTime - 1000) {
+    if (different < 0 || different < 1000) {
       clearInterval(timeInterval);
     }
 
